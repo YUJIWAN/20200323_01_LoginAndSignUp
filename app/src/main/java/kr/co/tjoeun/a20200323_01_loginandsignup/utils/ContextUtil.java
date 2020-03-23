@@ -10,6 +10,8 @@ public class ContextUtil {
 //    항목명도 자동오나성 지원할수 있도록 미리 변수화.
     private static final String EMAIL = "EMAIL";
 
+    private static final String ID_CHECK = "ID_CHECK";
+
 // 해당 항목의 값을 저장(setter) / 조회(getter) 하는 메쏘드 두개.
 
 //    setter
@@ -37,5 +39,17 @@ public class ContextUtil {
         return pref.getString(EMAIL, "");
     }
 
+    public static void setIdCheck(Context context, boolean isCheck){
+
+        SharedPreferences pref = context.getSharedPreferences(prefName, Context.MODE_PRIVATE);
+        pref.edit().putBoolean(ID_CHECK, isCheck).apply();
+
+    }
+
+    public static  boolean isIdCheck(Context context){
+
+        SharedPreferences pref = context.getSharedPreferences(prefName, Context.MODE_PRIVATE);
+        return pref.getBoolean(ID_CHECK,true);
+    }
 
 }
